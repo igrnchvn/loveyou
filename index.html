@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Сашуля 💖</title>
   <style>
     body {
@@ -18,7 +18,7 @@
     }
 
     h1 {
-      font-size: clamp(2.5rem, 8vw, 5rem); /* responsive font */
+      font-size: clamp(2.5rem, 8vw, 5rem);
       color: white;
       text-shadow: 3px 3px 8px rgba(0,0,0,0.4);
       z-index: 10;
@@ -36,8 +36,8 @@
 
     /* Button */
     button {
-      font-size: clamp(1.2rem, 5vw, 1.8rem);
-      padding: 15px 30px;
+      font-size: clamp(1.8rem, 6vw, 2.2rem); /* bigger for mobile */
+      padding: 22px 40px; /* bigger tap area */
       border: none;
       border-radius: 12px;
       cursor: pointer;
@@ -55,7 +55,6 @@
       background: #e91e63;
     }
 
-    /* Button click animation */
     button.click-pop {
       animation: pop 0.3s ease;
     }
@@ -113,7 +112,7 @@
       font-size: clamp(1rem, 4vw, 2rem);
       animation: floatUp linear infinite;
       opacity: 0.9;
-      z-index: 5; /* behind text/button */
+      z-index: 5;
     }
 
     @keyframes floatUp {
@@ -128,7 +127,7 @@
       opacity: 0;
       transform: scale(0.5);
       transition: all 1s ease;
-      z-index: 5; /* behind button/text */
+      z-index: 5;
     }
 
     #photo.show {
@@ -152,8 +151,8 @@
 <script>
   const colors = ['#ff4081', '#ffeb3b', '#69f0ae', '#40c4ff', '#ff9100'];
 
-  // Background confetti (falling from top)
-  for (let i = 0; i < 150; i++) { // reduced for mobile performance
+  // Background confetti
+  for (let i = 0; i < 150; i++) {
     const confetti = document.createElement('div');
     confetti.className = 'confetti';
     confetti.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
@@ -167,7 +166,7 @@
 
   // Balloons
   const balloonColors = ['#ff4081', '#ffeb3b', '#69f0ae', '#40c4ff', '#ff9100', '#d500f9'];
-  for (let i = 0; i < 10; i++) { // fewer balloons for mobile
+  for (let i = 0; i < 10; i++) {
     const balloon = document.createElement('div');
     balloon.className = 'balloon';
     balloon.style.backgroundColor = balloonColors[Math.floor(Math.random()*balloonColors.length)];
@@ -180,7 +179,7 @@
 
   // Hearts & Flowers
   const symbols = ['💖','❤️','💘','🌸','🌹','🌷','🌺','💐'];
-  for (let i = 0; i < 25; i++) { // fewer for mobile
+  for (let i = 0; i < 25; i++) {
     const el = document.createElement('div');
     el.className = 'float';
     el.innerText = symbols[Math.floor(Math.random() * symbols.length)];
@@ -209,7 +208,7 @@
     photo.style.transform = `scale(${scale})`;
     photo.style.width = (120 + Math.random() * 100) + 'px';
     photo.style.transition = 'all 0.5s ease';
-    photo.style.zIndex = 5; // behind button/text
+    photo.style.zIndex = 5;
     document.body.appendChild(photo);
 
     const duration = 5 + Math.random() * 5;
@@ -230,11 +229,11 @@
     btn.classList.add('click-pop');
     setTimeout(() => btn.classList.remove('click-pop'), 300);
 
-    for (let i = 0; i < 3; i++) { // fewer photos for mobile
+    for (let i = 0; i < 3; i++) {
       setTimeout(spawnPhoto, i * 300);
     }
 
-    for (let i = 0; i < 40; i++) { // fewer click confetti for mobile
+    for (let i = 0; i < 40; i++) {
       const piece = document.createElement('div');
       piece.className = 'confetti';
       piece.style.backgroundColor = colors[Math.floor(Math.random()*colors.length)];
